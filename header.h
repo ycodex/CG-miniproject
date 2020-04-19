@@ -36,6 +36,7 @@ float moveAxeInWater=0;
 
 float moveFishes=0.0;
 float theta=0.0;
+float alpha=0.0;
 static int flagMoveDownAxe=0;
 
 
