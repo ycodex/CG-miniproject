@@ -38,6 +38,11 @@ void drawWater(void);
 void drawLand(void);
 void drawGrasses();
 void drawGrass(int,int);
+void moverightlegs(float,float);
+void moveleftlegs(float,float);
+void leftleg(float,float);
+void rightleg(float,float);
+
 
 
 void drawTreeEdges(void);
@@ -74,6 +79,7 @@ void drawAxeInWater(float,float);
 
 void drawFishes(float);
 void drawFish(float,float);
+void DrawBubble(void);
 
 
 

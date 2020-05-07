@@ -19,7 +19,7 @@ void mydisplay()
 	if(windowFlag){
 		glClear(GL_COLOR_BUFFER_BIT);
 		glColor3f(1.0,0.0,0.0);
-		glRasterPos2f(60.0,470.0);
+		glRasterPos2f(125.0,470.0);
 		for(i=0;i<strlen(str1);i++)
 			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,str1[i]);
 		glutPostRedisplay();
@@ -61,13 +61,13 @@ void mydisplay()
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,str8[i]);
 		glutPostRedisplay();
 
-		glColor3f(0.2,0.8,0.4);
+		glColor3f(0.4,0.0,0.3);
 		glRasterPos2f(20.0,130.0);
 		for(i=0;i<strlen(str9);i++)
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,str9[i]);
 		glutPostRedisplay();
 
-		glColor3f(0.2,0.8,0.4);
+		glColor3f(0.4,0.0,0.3);
 		glRasterPos2f(20.0,110.0);
 		for(i=0;i<strlen(str10);i++)
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,str10[i]);
@@ -87,13 +87,13 @@ void mydisplay()
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,str12[i]);
 		glutPostRedisplay();
 
-		glColor3f(0.2,0.8,0.4);
+		glColor3f(0.4,0.0,0.3);
 		glRasterPos2f(350.0,130.0);
 		for(i=0;i<strlen(str13);i++)
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,str13[i]);
 		glutPostRedisplay();
 
-		glColor3f(0.2,0.8,0.4);
+		glColor3f(0.4,0.0,0.3);
 		glRasterPos2f(350.0,110.0);
 		for(i=0;i<strlen(str14);i++)
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,str14[i]);
@@ -206,28 +206,25 @@ void mydisplaySecondWindow()
 
 	drawTree();
 	drawGrasses();
-    glPushMatrix();
-    if(alpha>=0.0 && alpha<50.0){
-        moverightlegs(0,0);
-        alpha=+1.0;
-    }
-    else if(alpha>50.0){
-        glPushMatrix();
-        glTranslatef(0.0,-10.0,0.0);
-        moveleftlegs(0,0);
-        glPopMatrix();
-        alpha=+1.0;
 
-    }
-    if(alpha>100.0){
-            alpha=0.0;
-
-    }
 	//Motion to woodcutter that is 'd' or else 'a' stop
 	//flag5 is set on 'd' and unset on 'a'
 	if( j<250 && flag5==1)
 	{
 		cutter(100+j,200+yMove);
+		if(alpha>=0.0 && alpha<50.0){
+            rightleg(100+j,200+yMove);
+            leftleg(100+j,200+yMove);
+            alpha+=1.0;
+		}
+		else if(alpha>=25.0){
+            moverightlegs(100+j,200+yMove);
+            moveleftlegs(100+j,200+yMove);
+            alpha+=1.0;
+		}
+		if(alpha>60){
+            alpha=0.0;
+		}
 		j+=0.5;
 		displayHelp("A to Stop",1000,100);
 		displayHelp("W to up",1000,70);
@@ -456,45 +453,7 @@ void drawGrasses(void)
 	drawGrass(1200,460);
 }
 
-void moveleftlegs(float x,float y){
-    	//Draws the left leg of the wood cutter
-	glColor3f(1.0,0.90,0.85);
-	glBegin(GL_POLYGON);
-		glVertex2f(x-45,y-75);
-		glVertex2f(x-15,y);
-		glVertex2f(x-5,y);
-		glVertex2f(x-25,y-75);
-	glEnd();
 
-
-	glColor3f(0.0,0.0,0.0);
-	glBegin(GL_POLYGON);
-		glVertex2f(x-15,y-75);
-		glVertex2f(x-5,y-65);
-		glVertex2f(x+15,y-70);
-		glVertex2f(x+15,y-75);
-	glEnd();
-}
-
-	//Draws the right leg of the woodcutter
-void moverightlegs(float x,float y){
-	glColor3f(1.0,0.90,0.85);
-	glBegin(GL_POLYGON);
-		glVertex2f(x+30,y-75);
-		glVertex2f(x+10,y);
-		glVertex2f(x+20,y);
-		glVertex2f(x+40,y-75);
-	glEnd();
-
-
-	glColor3f(0.0,0.0,0.0);
-	glBegin(GL_POLYGON);
-		glVertex2f(x+10,y-75);
-		glVertex2f(x+20,y-65);
-		glVertex2f(x+40,y-70);
-		glVertex2f(x+40,y-75);
-	glEnd();
-}
 void drawGrass(int x,int y)
 {
 	glColor3f(0.1,0.6324,0.1);
@@ -566,7 +525,6 @@ void drawTreeEdges(void)
 			glVertex2f((250+r*cos(i)),(625+r*sin(i)));
 	glEnd();
 }
-
 
 
 
@@ -652,7 +610,7 @@ void cutter(float x,float y)
 
 
 
-	//Draws the left leg of the wood cutter
+//Draws the left leg of the wood cutter
 /*	glColor3f(1.0,0.90,0.85);
 	glBegin(GL_POLYGON);
 		glVertex2f(x-15,y-75);
@@ -2226,9 +2184,49 @@ void keyTenth(unsigned char key,int x,int y)
 		createNinthWindow();
 	}
 }
-void moveleftlegs(float x,float y){
-    	//Draws the left leg of the wood cutter
-	glColor3f(1.0,0.90,0.85);
+void rightleg(float x,float y)
+{
+
+  	glColor3f(1.0,0.90,0.85);
+	glBegin(GL_POLYGON);
+		glVertex2f(x+10,y-75);
+		glVertex2f(x+10,y);
+		glVertex2f(x+20,y);
+		glVertex2f(x+20,y-75);
+	glEnd();
+
+
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_POLYGON);
+		glVertex2f(x+10,y-75);
+		glVertex2f(x+20,y-65);
+		glVertex2f(x+40,y-70);
+		glVertex2f(x+40,y-75);
+	glEnd();
+}
+void leftleg(float x,float y)
+{
+
+    glColor3f(1.0,0.90,0.85);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-15,y-75);
+		glVertex2f(x-15,y);
+		glVertex2f(x-5,y);
+		glVertex2f(x-5,y-75);
+	glEnd();
+
+
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-15,y-75);
+		glVertex2f(x-5,y-65);
+		glVertex2f(x+15,y-70);
+		glVertex2f(x+15,y-75);
+	glEnd();
+}
+void moveleftlegs(float x,float y)
+{
+    glColor3f(1.0,0.90,0.85);
 	glBegin(GL_POLYGON);
 		glVertex2f(x-45,y-75);
 		glVertex2f(x-15,y);
@@ -2244,11 +2242,11 @@ void moveleftlegs(float x,float y){
 		glVertex2f(x+15,y-70);
 		glVertex2f(x+15,y-75);
 	glEnd();
-}
 
-	//Draws the right leg of the woodcutter
+}
 void moverightlegs(float x,float y)
-	glColor3f(1.0,0.90,0.85);
+{
+    glColor3f(1.0,0.90,0.85);
 	glBegin(GL_POLYGON);
 		glVertex2f(x+30,y-75);
 		glVertex2f(x+10,y);
@@ -2264,4 +2262,5 @@ void moverightlegs(float x,float y)
 		glVertex2f(x+40,y-70);
 		glVertex2f(x+40,y-75);
 	glEnd();
+
 }
