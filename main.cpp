@@ -1325,9 +1325,12 @@ void createFifthWindow(void)
 {
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
 	glutInitWindowSize(1300,700);
+	//glutInitWindowSize(1900,1200);
 	glutInitWindowPosition(0,0);
 	glutDestroyWindow(fourthWindow);
 	fifthWindow=glutCreateWindow("Miracle:Honest Woodcutter");
+
+
 	glutDisplayFunc(mydisplayFifthWindow);
 	initSecondWindow();
 	glutKeyboardFunc(key);
@@ -1338,7 +1341,9 @@ void mydisplayFifthWindow(void)
 
 	moveAxeInWater+=1.0;
 	glClear(GL_COLOR_BUFFER_BIT);
+
 	drawUnderWater();
+
 	if(moveAxeInWater<500)
 	{
 		moveDownAxe(600,750-moveAxeInWater);
@@ -1348,7 +1353,9 @@ void mydisplayFifthWindow(void)
 	{
 		drawAxeInWater(600.0,250.0);
 	}
+
 	drawFishes(moveFishes);
+
 	moveFishes+=1.0;
 	glutPostRedisplay();
 	glFlush();
@@ -1415,37 +1422,84 @@ void drawFishes(float xMove)
 
 void drawFish(float x,float y)
 {
-	float i=0.0;
-	float r=5.0;
 
+
+    float i=0.0;
+	float r=5.0;
 	glBegin(GL_POLYGON);
-		glVertex2f(x,y);
-		glVertex2f(x+10,y+10);
+		glVertex2f(x+10,y);
+		glVertex2f(x+15,y+10);
+		glVertex2f(x+20,y+14);//
+		glVertex2f(x+30,y+18);
+		glVertex2f(x+40,y+22);
 		glVertex2f(x+50,y+25);
-		glVertex2f(x+100,y+25);
+		glVertex2f(x+60,y+26);
+		glVertex2f(x+70,y+25);
+		glVertex2f(x+80,y+25);
+		glVertex2f(x+90,y+25);
+		glVertex2f(x+100,y+25);//
+
 		glVertex2f(x+150,y);
 		glVertex2f(x+100,y-25);
+		glVertex2f(x+60,y-26);
+		glVertex2f(x+70,y-25);
+		glVertex2f(x+80,y-25);
+		glVertex2f(x+90,y-25);
 		glVertex2f(x+50,y-25);
-		glVertex2f(x+10,y-10);
-		glVertex2f(x,y);
+		glVertex2f(x+20,y-14);//
+		glVertex2f(x+30,y-18);
+		glVertex2f(x+40,y-22);
+		glVertex2f(x+15,y-10);
+		glVertex2f(x+10,y);
 	glEnd();
-
-
-
-	//glColor3f(1.0,0.6,0.0);
+    //fish top fins
+    glColor3f(1.0,0.6,0.0);
 	glBegin(GL_POLYGON);
-		glVertex2f(x+110,y-15);
-		glVertex2f(x+110,y+15);
-		glVertex2f(x+155,y+15);
-		glVertex2f(x+155,y-15);
+        glVertex2f(x+50,y+25);
+        glVertex2f(x+70,y+29);
+        glVertex2f(x+95,y+33);
+        glVertex2f(x+105,y+36);
+        glVertex2f(x+115,y+38);
+        glVertex2f(x+120,y+40);
+        glVertex2f(x+110,y+30);
+        glVertex2f(x+100,y+25);
 	glEnd();
+    //fish bottom fins
+    glColor3f(1.0,0.6,0.0);
+    glBegin(GL_POLYGON);
+        glVertex2f(x+20,y-8);
+        glVertex2f(x+30,y-10);
+        glVertex2f(x+40,y-15);
+        glVertex2f(x+50,y-20);
+        glVertex2f(x+90,y-20);
+        glVertex2f(x+80,y-8);
+    glEnd();
+ /*   if(beta==0.0 && beta<=50.0){
 
+        glColor3f(1.0,0.6,0.0);
 	glBegin(GL_POLYGON);
-		glVertex2f(x+155,y-15);
-		glVertex2f(x+155,y+15);
-		glVertex2f(x+175,y+30);
-		glVertex2f(x+175,y-30);
+		glVertex2f(x+110,y-10);
+		glVertex2f(x+110,y+10);
+		glVertex2f(x+155,y+30);
+		glVertex2f(x+155,y-30);
 	glEnd();
+	beta+=1.0;
+    }
+    else if(beta>25.0){*/
+	glColor3f(1.0,0.6,0.0);
+	glBegin(GL_POLYGON);
+		glVertex2f(x+110,y-10);
+		glVertex2f(x+110,y+10);
+		glVertex2f(x+155,y+40);
+		glVertex2f(x+155,y-40);
+	glEnd();
+/*	beta+=1.0;
+
+    }
+    if(beta>60.0){
+        beta=0.0;
+    }*/
+
 
 	glColor3f(1.0,1.0,1.0);
 	glBegin(GL_POLYGON);

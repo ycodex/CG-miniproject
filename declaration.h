@@ -120,3 +120,7 @@ void displayTenthWindow();
 void drawCutterInFishThree(float x,float y);
 
 void displayTextAll(float y);
+
+
+
+
