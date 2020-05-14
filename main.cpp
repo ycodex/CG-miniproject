@@ -1341,8 +1341,12 @@ void mydisplayFifthWindow(void)
 
 	moveAxeInWater+=1.0;
 	glClear(GL_COLOR_BUFFER_BIT);
-
+    glPushMatrix();
 	drawUnderWater();
+
+    plant();
+    eli();
+    glPopMatrix();
 
 	if(moveAxeInWater<500)
 	{
@@ -1353,9 +1357,9 @@ void mydisplayFifthWindow(void)
 	{
 		drawAxeInWater(600.0,250.0);
 	}
-
+    draw_bubble(bmove);
 	drawFishes(moveFishes);
-
+    bmove+=1.0;
 	moveFishes+=1.0;
 	glutPostRedisplay();
 	glFlush();
@@ -1422,7 +1426,6 @@ void drawFishes(float xMove)
 
 void drawFish(float x,float y)
 {
-
 
     float i=0.0;
 	float r=5.0;
@@ -1507,7 +1510,217 @@ void drawFish(float x,float y)
 			glVertex2f((x+25+r*cos(i)),(y+5+r*sin(i)));
 	glEnd();
 }
+void eli()
+{
+	glColor3f(0.4,0.8,.80);
+//	glBegin(GL_POLYGON);
+	//
+	glBegin(GL_POLYGON);
+	for(float i=0;i<180;i++)
+	glVertex2f(320+12*cos(i),200+5+6*sin(i));
+	glEnd();
+	glColor3f(1,1,1);
+	glBegin(GL_POLYGON);
+	for(float j=0;j<180;j++)
+	glVertex2f(300+12*cos(j),200+5+6*sin(j));
+	glEnd();
+glColor3f(0.4,0.8,.80);
+	glBegin(GL_POLYGON);
+	for(float l=0;l<180;l++)
+	glVertex2f(280+12*cos(l),200+5+6*sin(l));
+	glEnd();
+	glColor3f(1,1,1);
+	glBegin(GL_POLYGON);
+	for(float p=0;p<180;p++)
+	glVertex2f(260+12*cos(p),200+5+6*sin(p));
+	glEnd();
 
+	glColor3f(0.4,0.8,.80);
+	glBegin(GL_POLYGON);
+	for(float r=0;r<180;r++)
+	glVertex2f(385+12*cos(r),200+5+6*sin(r));
+	glEnd();
+
+
+    glColor3f(0.4,0.8,.80);
+//	glBegin(GL_POLYGON);
+	//
+	glBegin(GL_POLYGON);
+	for(float i=0;i<180;i++)
+	glVertex2f(620+12*cos(i),200+5+6*sin(i));
+	glEnd();
+	glColor3f(1,1,1);
+	glBegin(GL_POLYGON);
+	for(float j=0;j<180;j++)
+	glVertex2f(600+12*cos(j),200+5+6*sin(j));
+	glEnd();
+glColor3f(0.4,0.8,.80);
+	glBegin(GL_POLYGON);
+	for(float l=0;l<180;l++)
+	glVertex2f(780+12*cos(l),200+5+6*sin(l));
+	glEnd();
+	glColor3f(1,1,1);
+	glBegin(GL_POLYGON);
+	for(float p=0;p<180;p++)
+	glVertex2f(760+12*cos(p),200+5+6*sin(p));
+	glEnd();
+}
+
+void draw_bubble(float bmove)
+{
+
+    bubble(300,100+bmove);
+    bubble(400,100+bmove);
+
+}
+void bubble(float x, float y)
+{
+    float i=0.0;
+	float r=15.0;
+    glColor3f(1.0,1.0,1.0);
+	glBegin(GL_POLYGON);
+		for(i=0;i<360;i++)
+			glVertex2f((x+25+r*cos(i)),(y+5+r*sin(i)));
+	glEnd();
+
+}
+void plant()
+{
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+10,200);
+	glVertex2f(330+10,220);
+	glVertex2f(350+10,210);
+	glVertex2f(350+10,250);
+	glVertex2f(360+10,210);
+	glVertex2f(370+10,220);
+	glVertex2f(380,240);
+	glVertex2f(380,200);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340-130,200);
+	glVertex2f(330-130,220);
+	glVertex2f(350-130,210);
+	glVertex2f(350-130,250);
+	glVertex2f(360-130,210);
+	glVertex2f(370-130,220);
+	glVertex2f(380-130,240);
+	glVertex2f(380-130,200);
+	//glVertex2f(340,200);
+	glEnd();
+
+    glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340-230,200);
+	glVertex2f(330-230,220);
+	glVertex2f(350-230,210);
+	glVertex2f(350-230,250);
+	glVertex2f(360-230,210);
+	glVertex2f(370-230,220);
+	glVertex2f(380-230,240);
+	glVertex2f(380-230,200);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+100,100);
+	glVertex2f(330+100,120);
+	glVertex2f(350+100,110);
+	glVertex2f(350+100,150);
+	glVertex2f(360+100,110);
+	glVertex2f(370+100,120);
+	glVertex2f(380+100,140);
+	glVertex2f(380+100,100);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+200,100);
+	glVertex2f(330+200,120);
+	glVertex2f(350+200,110);
+	glVertex2f(350+200,150);
+	glVertex2f(360+200,110);
+	glVertex2f(370+200,120);
+	glVertex2f(580,140);
+	glVertex2f(580,100);
+	//glVertex2f(340,200);
+	glEnd();
+
+
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+300,200);
+	glVertex2f(330+300,220);
+	glVertex2f(350+300,210);
+	glVertex2f(350+300,250);
+	glVertex2f(360+300,210);
+	glVertex2f(370+300,220);
+	glVertex2f(680,240);
+	glVertex2f(680,200);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+400,100);
+	glVertex2f(330+400,120);
+	glVertex2f(350+400,110);
+	glVertex2f(350+400,150);
+	glVertex2f(360+400,110);
+	glVertex2f(370+400,120);
+	glVertex2f(780,140);
+	glVertex2f(780,100);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+500,200);
+	glVertex2f(330+500,220);
+	glVertex2f(350+500,210);
+	glVertex2f(350+500,250);
+	glVertex2f(360+500,210);
+	glVertex2f(370+500,220);
+	glVertex2f(880,240);
+	glVertex2f(880,200);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+600,300);
+	glVertex2f(330+600,320);
+	glVertex2f(350+600,310);
+	glVertex2f(350+600,350);
+	glVertex2f(360+600,310);
+	glVertex2f(370+600,320);
+	glVertex2f(380+600,340);
+	glVertex2f(380+600,300);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+700,200);
+	glVertex2f(330+700,220);
+	glVertex2f(350+700,210);
+	glVertex2f(350+700,250);
+	glVertex2f(360+700,210);
+	glVertex2f(370+700,220);
+	glVertex2f(380+700,240);
+	glVertex2f(380+700,200);
+	//glVertex2f(340,200);
+	glEnd();
+
+
+}
 
 void createSixthWindow(void)
 {

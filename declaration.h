@@ -70,7 +70,10 @@ void mydisplayFourthWindow(void);
 void moveDownAxe(float x,float y);
 
 
-
+void plant();
+void eli();
+void draw_bubble(float);
+void bubble(float,float);
 void createFifthWindow(void);
 void mydisplayFifthWindow(void);
 void drawUnderWater(void);

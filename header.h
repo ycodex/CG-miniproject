@@ -33,7 +33,7 @@ static int flagFourthScene=1;
 
 static int flagFifthScene=0;
 float moveAxeInWater=0;
-
+float bmove=0.0;
 float moveFishes=0.0;
 float theta=0.0;
 float alpha=0.0;

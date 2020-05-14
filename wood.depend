@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1589000409 source:c:\users\karthik\documents\new folder\wood\main.cpp
+1589471961 source:c:\users\karthik\documents\new folder\wood\main.cpp
 	"declaration.h"
 	"header.h"
 
-1588870973 c:\users\karthik\documents\new folder\wood\declaration.h
+1589472014 c:\users\karthik\documents\new folder\wood\declaration.h
 	<windows.h>
 	<math.h>
 	<GL/glut.h>
@@ -376,5 +376,5 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1586797194 c:\users\karthik\documents\new folder\wood\header.h
+1589471861 c:\users\karthik\documents\new folder\wood\header.h
 
