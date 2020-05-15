@@ -32,7 +32,8 @@ void createNewWindow(void);
 void initSecondWindow(void);
 void mydisplaySecondWindow(void);
 //void key(unsigned char,int,int);
-
+void tree(void);
+void plant1(void);
 void drawTree(void);
 void drawWater(void);
 void drawLand(void);
@@ -52,6 +53,7 @@ void drawLeafTriangles(void);
 void drawWoodcutter(int,int);
 void drawCutter(int,int);
 void cutter(float,float);
+void cutter1(float,float);
 
 
 

@@ -2,7 +2,6 @@
 #include "header.h"
 
 
-
 void myinit(void)
 {
 	glClearColor(0.0,0.0,0.0,1.0);
@@ -195,23 +194,29 @@ void mydisplaySecondWindow()
 
 	glPushMatrix();
 	glTranslatef(-100.0,200.0,0.0);
+	//tree();
 	drawTree();
 	glPopMatrix();
 
 
 	glPushMatrix();
 	glTranslatef(600.0,300.0,0.0);
+	//tree();
 	drawTree();
 	glPopMatrix();
-
-	drawTree();
+    //tree();
+    drawTree();
 	drawGrasses();
-
+    plant1();
 	//Motion to woodcutter that is 'd' or else 'a' stop
 	//flag5 is set on 'd' and unset on 'a'
-	if( j<250 && flag5==1)
+	if(j==0.0){
+	cutter(100,200);
+	}
+	else if( j<250 && flag5==1)
 	{
-		cutter(100+j,200+yMove);
+
+		cutter1(100+j,200+yMove);
 		if(alpha>=0.0 && alpha<50.0){
             rightleg(100+j,200+yMove);
             leftleg(100+j,200+yMove);
@@ -222,6 +227,7 @@ void mydisplaySecondWindow()
             moveleftlegs(100+j,200+yMove);
             alpha+=1.0;
 		}
+
 		if(alpha>60){
             alpha=0.0;
 		}
@@ -270,6 +276,664 @@ void initSecondWindow(void)
 	gluOrtho2D(0,1300,0,700);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+}
+void cutter1(float x,float y)
+{
+
+
+
+
+	//Draws the face
+	float radius = 35.0;
+	glColor3f(1.0,0.90,0.85);
+
+	glBegin(GL_POLYGON);
+		for(float i=0;i<360;i+=0.1)
+			glVertex2f(cos(i)*radius+x,sin(i)*radius+y+150);
+	glEnd();
+
+	radius=6.0;
+	glColor3f(1.0,1.0,1.0);
+	glBegin(GL_POLYGON);
+		for(float i=0;i<360;i++)
+			glVertex2f(cos(i)*radius+x+20,sin(i)*radius+y+160);
+	glEnd();
+
+	radius=3.0;
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_POLYGON);
+		for(float i=0;i<360;i++)
+			glVertex2f(cos(i)*radius+x+20,sin(i)*radius+y+160);
+	glEnd();
+
+
+	//Hair of the woodcutter
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-35,y+150);
+		glVertex2f(x-35,y+170);
+		glVertex2f(x-25,y+195);
+		glVertex2f(x+40,y+195);
+		glVertex2f(x+35,y+175);
+		glVertex2f(x+20,y+170);
+	glEnd();
+
+
+	//Draws the neck of the woodcutter
+	glColor3f(1.0,0.90,0.85);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-10.0,y+100.0);
+		glVertex2f(x-10.0,y+120.0);
+		glVertex2f(x+10.0,y+120.0);
+		glVertex2f(x+10.0,y+100.0);
+	glEnd();
+
+
+	//Draws the left hand of woodcutter
+	glBegin(GL_POLYGON);
+		glVertex2f(x+10,y+90);
+		glVertex2f(x+10,y+100);
+		glVertex2f(x+50,y+85);
+		glVertex2f(x+50,y+75);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glVertex2f(x+50,y+75);
+		glVertex2f(x+50,y+85);
+		glVertex2f(x+75,y+105);
+		glVertex2f(x+75,y+95);
+	glEnd();
+
+
+
+	//Draws the red shirt of woodcutter
+	glColor3f(0.8,0.0,0.0);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-25,y);
+		glVertex2f(x-25,y+75);
+		glVertex2f(x-10,y+100);
+		glVertex2f(x+10,y+100);
+		glVertex2f(x+25,y+75);
+		glVertex2f(x+25,y);
+	glEnd();
+
+
+
+//Draws the left leg of the wood cutter
+/*	glColor3f(1.0,0.90,0.85);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-15,y-75);
+		glVertex2f(x-15,y);
+		glVertex2f(x-5,y);
+		glVertex2f(x-5,y-75);
+	glEnd();
+
+
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-15,y-75);
+		glVertex2f(x-5,y-65);
+		glVertex2f(x+15,y-70);
+		glVertex2f(x+15,y-75);
+	glEnd();
+
+	//Draws the right leg of the woodcutter
+
+	glColor3f(1.0,0.90,0.85);
+	glBegin(GL_POLYGON);
+		glVertex2f(x+10,y-75);
+		glVertex2f(x+10,y);
+		glVertex2f(x+20,y);
+		glVertex2f(x+20,y-75);
+	glEnd();
+
+
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_POLYGON);
+		glVertex2f(x+10,y-75);
+		glVertex2f(x+20,y-65);
+		glVertex2f(x+40,y-70);
+		glVertex2f(x+40,y-75);
+	glEnd();
+*/
+	//Draws the shoes of woodcutter
+
+
+
+	//Draws the trousers of the woodcutter
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-25,y);
+		glVertex2f(x-25,y+25);
+		glVertex2f(x+25,y+25);
+		glVertex2f(x+25,y);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glVertex2f(x-25,y-30);
+		glVertex2f(x-25,y);
+		glVertex2f(x-2,y);
+		glVertex2f(x-2,y-30);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glVertex2f(x+4,y-30);
+		glVertex2f(x+4,y);
+		glVertex2f(x+25,y);
+		glVertex2f(x+25,y-30);
+	glEnd();
+
+
+
+	//Draws the right hand of the woodcutter
+	glColor3f(1.0,0.90,0.85);
+	glBegin(GL_POLYGON);
+		glVertex2f(x,y+70);
+		glVertex2f(x,y+80);
+		glVertex2f(x+55,y+65);
+		glVertex2f(x+55,y+55);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+		glVertex2f(x+55,y+55);
+		glVertex2f(x+55,y+65);
+		glVertex2f(x+80,y+95);
+		glVertex2f(x+80,y+85);
+	glEnd();
+
+
+	//Draws the mouth of the woodcutter
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_LINE_STRIP);
+		glVertex2f(x+25,y+125);
+		glVertex2f(x+10,y+125);
+		glVertex2f(x+10,y+127);
+	glEnd();
+
+	//Draws the Nose of the woodcutter
+
+	glBegin(GL_LINE_STRIP);
+		glVertex2f(x+32,y+140);
+		glVertex2f(x+32,y+150);
+		glVertex2f(x+34,y+155);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+		glVertex2f(x-10,y+160);
+		glVertex2f(x-20,y+160);
+		glVertex2f(x-20,y+140);
+		glVertex2f(x-10,y+140);
+	glEnd();
+
+	glBegin(GL_LINES);
+		glVertex2f(x-20,y+150);
+		glVertex2f(x-10,y+150);
+	glEnd();
+
+
+	//Draws the axe
+	glColor3f(0.8456,0.684,0.4424);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-95,y+95);
+		glVertex2f(x-95,y+105);
+		glVertex2f(x+95,y+105);
+		glVertex2f(x+95,y+95);
+	glEnd();
+
+
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_POLYGON);
+		glVertex2f(x-90,y+65);
+		glVertex2f(x-90,y+115);
+		glVertex2f(x-60,y+115);
+		glVertex2f(x-60,y+65);
+	glEnd();
+
+	//Draws the Right palm
+	glColor3f(1.0,0.90,0.85);
+	glBegin(GL_POLYGON);
+		glVertex2f(x+80,y+85);
+		glVertex2f(x+80,y+105);
+		glVertex2f(x+90,y+105);
+		glVertex2f(x+90,y+95);
+	glEnd();
+
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_LINES);
+		glVertex2f(x+80,y+105);
+		glVertex2f(x+80,y+100);
+		glVertex2f(x+82.5,y+105);
+		glVertex2f(x+82.5,y+100);
+		glVertex2f(x+85,y+105);
+		glVertex2f(x+85,y+100);
+		glVertex2f(x+87,y+105);
+		glVertex2f(x+87,y+100);
+		glVertex2f(x+89.5,y+105);
+		glVertex2f(x+89.5,y+100);
+	glEnd();
+
+	//Draws the left palm
+	glColor3f(1.0,0.90,0.85);
+	glBegin(GL_POLYGON);
+		glVertex2f(x+65,y+95);
+		glVertex2f(x+65,y+105);
+		glVertex2f(x+75,y+105);
+		glVertex2f(x+75,y+95);
+	glEnd();
+
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_LINES);
+		glVertex2f(x+65,y+105);
+		glVertex2f(x+65,y+100);
+		glVertex2f(x+67.5,y+105);
+		glVertex2f(x+67.5,y+100);
+		glVertex2f(x+70,y+105);
+		glVertex2f(x+70,y+100);
+		glVertex2f(x+72.5,y+105);
+		glVertex2f(x+72.5,y+100);
+		glVertex2f(x+74.5,y+105);
+		glVertex2f(x+74.5,y+100);
+	glEnd();
+
+}
+
+void plant1()
+{
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+10,200);
+	glVertex2f(330+10,220);
+	glVertex2f(350+10,210);
+	glVertex2f(350+10,250);
+	glVertex2f(360+10,210);
+	glVertex2f(370+10,220);
+	glVertex2f(380,240);
+	glVertex2f(380,200);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340-130,200);
+	glVertex2f(330-130,220);
+	glVertex2f(350-130,210);
+	glVertex2f(350-130,250);
+	glVertex2f(360-130,210);
+	glVertex2f(370-130,220);
+	glVertex2f(380-130,240);
+	glVertex2f(380-130,200);
+	//glVertex2f(340,200);
+	glEnd();
+
+    glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340-230,200);
+	glVertex2f(330-230,220);
+	glVertex2f(350-230,210);
+	glVertex2f(350-230,250);
+	glVertex2f(360-230,210);
+	glVertex2f(370-230,220);
+	glVertex2f(380-230,240);
+	glVertex2f(380-230,200);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+100,150);
+	glVertex2f(330+100,170);
+	glVertex2f(350+100,160);
+	glVertex2f(350+100,200);
+	glVertex2f(360+100,160);
+	glVertex2f(370+100,170);
+	glVertex2f(380+100,190);
+	glVertex2f(380+100,150);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+200,150);
+	glVertex2f(330+200,170);
+	glVertex2f(350+200,160);
+	glVertex2f(350+200,200);
+	glVertex2f(360+200,160);
+	glVertex2f(370+200,170);
+	glVertex2f(580,190);
+	glVertex2f(580,150);
+	//glVertex2f(340,200);
+	glEnd();
+
+
+/*
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+300,200);
+	glVertex2f(330+300,220);
+	glVertex2f(350+300,210);
+	glVertex2f(350+300,250);
+	glVertex2f(360+300,210);
+	glVertex2f(370+300,220);
+	glVertex2f(680,240);
+	glVertex2f(680,200);
+	//glVertex2f(340,200);
+	glEnd();
+/*
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+400,100);
+	glVertex2f(330+400,120);
+	glVertex2f(350+400,110);
+	glVertex2f(350+400,150);
+	glVertex2f(360+400,110);
+	glVertex2f(370+400,120);
+	glVertex2f(780,140);
+	glVertex2f(780,100);
+	//glVertex2f(340,200);
+	glEnd();
+
+/*	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+500,600);
+	glVertex2f(330+500,620);
+	glVertex2f(350+500,610);
+	glVertex2f(350+500,650);
+	glVertex2f(360+500,610);
+	glVertex2f(370+500,620);
+	glVertex2f(880,640);
+	glVertex2f(880,600);
+	//glVertex2f(340,200);
+	glEnd();
+*/
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+600,450);
+	glVertex2f(330+600,470);
+	glVertex2f(350+600,460);
+	glVertex2f(350+600,500);
+	glVertex2f(360+600,460);
+	glVertex2f(370+600,470);
+	glVertex2f(380+600,490);
+	glVertex2f(380+600,450);
+	//glVertex2f(340,200);
+	glEnd();
+
+	glColor3f(0,0.8,0);
+	glBegin(GL_POLYGON);
+	glVertex2f(340+700,500);
+	glVertex2f(330+700,520);
+	glVertex2f(350+700,510);
+	glVertex2f(350+700,550);
+	glVertex2f(360+700,510);
+	glVertex2f(370+700,520);
+	glVertex2f(380+700,540);
+	glVertex2f(380+700,500);
+	//glVertex2f(340,200);
+	glEnd();
+
+
+}
+void tree(void)
+{
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(32,300);
+	glVertex2i(100,298);
+	glVertex2i(50,390);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(74,462);
+	glVertex2i(50,390);
+	glVertex2i(54,382);
+	glVertex2i(50,370);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(74,462);
+	glVertex2i(72,392);
+	glVertex2i(82,330);
+	glVertex2i(50,390);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(50,444);
+	glVertex2i(100,570);
+	glVertex2i(80,540);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(84,540);
+	glVertex2i(74,462);
+	glVertex2i(50,444);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(50,444);
+	glVertex2i(50,390);
+	glVertex2i(74,462);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(50,444);
+	glVertex2i(48,546);
+	glVertex2i(56,582);
+	glVertex2i(76,584);
+	glVertex2i(100,570);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(100,570);
+	glVertex2i(84,588);
+	glVertex2i(76,584);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(100,570);
+	glVertex2i(90,606);
+	glVertex2i(76,584);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(48,546);
+	glVertex2i(33,588);
+	glVertex2i(56,582);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(32,603);
+	glVertex2i(42,612);
+	glVertex2i(44,580);
+	glVertex2i(33,588);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(56,582);
+	glVertex2i(70,613);
+	glVertex2i(76,584);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(70,613);
+	glVertex2i(56,582);
+	glVertex2i(68,660);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(70,613);
+	glVertex2i(68,660);
+	glVertex2i(72,603);
+	glVertex2i(76,648);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(100,298);
+	glVertex2i(106,300);
+	glVertex2i(94,312);
+	glVertex2i(93,311);
+	glEnd();
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(0,298);
+	glVertex2i(32,300);
+	glVertex2i(43,346);
+	glEnd();
+	////////////////////
+	glColor3f(0.6,0.3,0);
+	glBegin(GL_POLYGON);
+	glVertex2i(93,312);
+	glVertex2i(140,300);
+	glVertex2i(100,300);
+	glEnd();
+
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(42,612);
+	glVertex2i(44,581);
+	glVertex2i(56,582);
+	glVertex2i(62,600);
+	glVertex2i(68,660);
+	glVertex2i(46,720);
+	glVertex2i(34,714);
+	glVertex2i(28,660);
+	glVertex2i(26,654);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(42,612);
+	glVertex2i(26,654);
+	glVertex2i(28,642);
+	glVertex2i(14,618);
+	glVertex2i(18,582);
+	glVertex2i(32,603);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(76,486);
+	glVertex2i(80,456);
+	glVertex2i(88,454);
+	glVertex2i(98,476);
+	glVertex2i(100,498);
+	glVertex2i(84,540);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(84,540);
+	glVertex2i(100,498);
+	glVertex2i(104,480);
+	glVertex2i(114,492);
+	glVertex2i(118,522);
+	glVertex2i(100,570);
+	glVertex2i(84,540);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(100,570);
+	glVertex2i(118,522);
+	glVertex2i(130,522);
+	glVertex2i(136,552);
+	glVertex2i(130,576);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(100,570);
+	glVertex2i(130,576);
+	glVertex2i(136,600);
+	glVertex2i(132,636);
+	glVertex2i(124,636);
+	glVertex2i(76,648);
+	glVertex2i(72,603);
+	glVertex2i(76,584);
+	glVertex2i(84,588);
+	glVertex2i(90,606);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(124,636);
+	glVertex2i(126,660);
+	glVertex2i(124,678);
+	glVertex2i(116,678);
+	glVertex2i(76,648);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(116,678);
+	glVertex2i(112,720);
+	glVertex2i(103,714);
+	glVertex2i(96,732);
+	glVertex2i(76,648);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(96,732);
+	glVertex2i(88,720);
+	glVertex2i(76,750);
+	glVertex2i(78,744);
+	glVertex2i(80,720);
+	glVertex2i(76,648);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(86,660);
+	glVertex2i(46,720);
+	glVertex2i(56,744);
+	glVertex2i(66,738);
+	glVertex2i(80,720);
+	glVertex2i(76,648);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(46,720);
+	glVertex2i(86,660);
+	glVertex2i(62,598);
+	glVertex2i(56,582);
+	glVertex2i(44,581);
+	glVertex2i(42,652);
+	glVertex2i(25,654);
+	glVertex2i(28,690);
+	glVertex2i(34,714);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(42,652);
+	glVertex2i(25,654);
+	glVertex2i(18,642);
+	glVertex2i(14,618);
+	glVertex2i(18,582);
+	glEnd();
+	////////////////////
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(18,582);
+	glVertex2i(32,606);
+	glVertex2i(33,588);
+	glVertex2i(24,516);
+	glVertex2i(14,519);
+	glVertex2i(14,564);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(33,588);
+	glVertex2i(24,516);
+	glVertex2i(25,480);
+	glVertex2i(34,468);
+	glVertex2i(38,480);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(38,480);
+	glVertex2i(48,546);
+	glVertex2i(33,588);
+	glEnd();
+	glColor3f(0.000f, 0.392f, 0.000f);         //tree leaf
+	glBegin(GL_POLYGON);
+	glVertex2i(38,480);
+	glVertex2i(46,476);
+	glVertex2i(50,444);
+	glVertex2i(48,546);
+	glVertex2i(33,588);
+	glEnd();
 }
 
 void drawTree(void)
@@ -611,7 +1275,7 @@ void cutter(float x,float y)
 
 
 //Draws the left leg of the wood cutter
-/*	glColor3f(1.0,0.90,0.85);
+	glColor3f(1.0,0.90,0.85);
 	glBegin(GL_POLYGON);
 		glVertex2f(x-15,y-75);
 		glVertex2f(x-15,y);
@@ -646,7 +1310,7 @@ void cutter(float x,float y)
 		glVertex2f(x+40,y-70);
 		glVertex2f(x+40,y-75);
 	glEnd();
-*/
+
 	//Draws the shoes of woodcutter
 
 
@@ -1569,15 +2233,19 @@ glColor3f(0.4,0.8,.80);
 void draw_bubble(float bmove)
 {
 
-    bubble(300,100+bmove);
-    bubble(400,100+bmove);
+    bubble(200,100+bmove);
+    bubble(400,200+bmove);
+    bubble(600,150+bmove);
+    bubble(800,50+bmove);
 
 }
 void bubble(float x, float y)
 {
     float i=0.0;
 	float r=15.0;
+
     glColor3f(1.0,1.0,1.0);
+
 	glBegin(GL_POLYGON);
 		for(i=0;i<360;i++)
 			glVertex2f((x+25+r*cos(i)),(y+5+r*sin(i)));
@@ -2251,22 +2919,13 @@ void displayNinthWindow()
 	glClearColor(0.0,0.0,0.0,1.0);
 	if(tCount<=100)
 		displayHelp("Thank you...!",200,500);
-	if(tCount>100 && tCount<=200)
-		displayHelp("Special Thanks to Mr.Sudharshan K",200,500);
 
-	else if(tCount>200&&tCount<=500)
-	{
-		displayHelp("Story:Sudharshan.A",200,550);
-		displayHelp("Design:Sudharshan.A",200,500);
-		displayHelp("Programming:Shreesha.M",200,450);
-		displayHelp("Guided by:Mr.Sudarshan K",200,600);
-	}
-	else if(tCount>500)
+	else if(tCount>100 && tCount<200)
 	{
 		displayHelp("HONESTY IS THE BEST POLICY",300,350);
 	}
 
-	else if(tCount==750.0)
+	else if(tCount>200)
 	{
 		exit(0);
 	}
@@ -2504,10 +3163,10 @@ void moveleftlegs(float x,float y)
 
 	glColor3f(0.0,0.0,0.0);
 	glBegin(GL_POLYGON);
-		glVertex2f(x-15,y-75);
-		glVertex2f(x-5,y-65);
-		glVertex2f(x+15,y-70);
-		glVertex2f(x+15,y-75);
+		glVertex2f(x-45,y-75);
+		glVertex2f(x-15,y-65);
+		glVertex2f(x-5,y-70);
+		glVertex2f(x+25,y-75);
 	glEnd();
 
 }
@@ -2524,9 +3183,9 @@ void moverightlegs(float x,float y)
 
 	glColor3f(0.0,0.0,0.0);
 	glBegin(GL_POLYGON);
-		glVertex2f(x+10,y-75);
-		glVertex2f(x+20,y-65);
-		glVertex2f(x+40,y-70);
+		glVertex2f(x+30,y-75);
+		glVertex2f(x+40,y-65);
+		glVertex2f(x+50,y-70);
 		glVertex2f(x+40,y-75);
 	glEnd();
 
