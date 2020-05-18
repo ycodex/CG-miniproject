@@ -32,12 +32,18 @@ void createNewWindow(void);
 void initSecondWindow(void);
 void mydisplaySecondWindow(void);
 //void key(unsigned char,int,int);
-
+void tree(void);
+void plant1(void);
 void drawTree(void);
 void drawWater(void);
 void drawLand(void);
 void drawGrasses();
 void drawGrass(int,int);
+void moverightlegs(float,float);
+void moveleftlegs(float,float);
+void leftleg(float,float);
+void rightleg(float,float);
+
 
 
 void drawTreeEdges(void);
@@ -47,6 +53,7 @@ void drawLeafTriangles(void);
 void drawWoodcutter(int,int);
 void drawCutter(int,int);
 void cutter(float,float);
+void cutter1(float,float);
 
 
 
@@ -65,7 +72,10 @@ void mydisplayFourthWindow(void);
 void moveDownAxe(float x,float y);
 
 
-
+void plant();
+void eli();
+void draw_bubble(float);
+void bubble(float,float);
 void createFifthWindow(void);
 void mydisplayFifthWindow(void);
 void drawUnderWater(void);
@@ -74,6 +84,7 @@ void drawAxeInWater(float,float);
 
 void drawFishes(float);
 void drawFish(float,float);
+void DrawBubble(void);
 
 
 
@@ -114,3 +125,7 @@ void displayTenthWindow();
 void drawCutterInFishThree(float x,float y);
 
 void displayTextAll(float y);
+
+
+
+
