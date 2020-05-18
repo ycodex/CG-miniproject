@@ -188,28 +188,37 @@ void createNewWindow()
 void mydisplaySecondWindow()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
+	sun();
 	drawLand();
 
+
+    hills();
 	drawWater();
 
 	glPushMatrix();
-	glTranslatef(-100.0,200.0,0.0);
-	//tree();
-	drawTree();
-	glPopMatrix();
+	glTranslatef(-40.0,100.0,0.0);
+	tree();
 
+	glPopMatrix();
+    drawbirds(birdsmove);
+	birdsmove+=0.5;
 
 	glPushMatrix();
-	glTranslatef(600.0,300.0,0.0);
+	glTranslatef(600.0,550.0,0.0);
+	cloud();
 	//tree();
-	drawTree();
+	//drawTree();
 	glPopMatrix();
     //tree();
     drawTree();
 	drawGrasses();
     plant1();
+
+
+
 	//Motion to woodcutter that is 'd' or else 'a' stop
 	//flag5 is set on 'd' and unset on 'a'
+
 	if(j==0.0){
 	cutter(100,200);
 	}
@@ -276,6 +285,105 @@ void initSecondWindow(void)
 	gluOrtho2D(0,1300,0,700);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+}
+void circle(int x,int y,int r){
+
+	glBegin(GL_POLYGON);
+		for(i=0;i<360;i++)
+			glVertex2f((x+25+r*cos(i)),(y+5+r*sin(i)));
+	glEnd();
+
+
+}
+void cloud(){
+    glColor3f(1.0,1.0,1.0);
+    circle(100,100,10);
+    circle(95,90,10);
+    circle(92,90,10);
+    circle(90,100,10);
+
+
+}
+void drawbirds(float bimove){
+    glColor3f(0.0,0.0,0.0);
+    birds(0+bimove,650);
+    glColor3f(0.0,0.0,0.0);
+    birds(10+bimove,680);
+
+}
+
+void birds(float x,float y){
+
+    glBegin(GL_POLYGON);
+        glVertex2f(0+x,0+y);
+        glVertex2f(5+x,5+y);
+        glVertex2f(0+x,5+y);
+        glVertex2f(-10+x,-10+y);
+        glVertex2f(0+x,20+y);
+        glVertex2f(0+x,5+y);
+        glVertex2f(0+x,0+y);
+    glEnd();
+
+
+}
+
+void sun(){
+    float i=0.0;
+	float d=100.0;
+    glColor3f(1.0,1.0,.0);
+	glBegin(GL_POLYGON);
+		for(i=0;i<360;i++)
+			glVertex2f((1200+25+d*cos(i)),(550+5+d*sin(i)));
+	glEnd();
+
+}
+
+void hills(){
+         glColor3f(0.5,0.35,0.05);
+        glBegin(GL_POLYGON);
+            glVertex2f(50,520);
+            glVertex2f(-10,520);
+            glVertex2f(-20,650);
+            glVertex2f(50,520);
+
+        glEnd();
+        glColor3f(0.5,0.35,0.05);
+        glBegin(GL_POLYGON);
+            glVertex2f(0,520);
+            glVertex2f(650,520);
+            glVertex2f(320,650);
+            glVertex2f(0,520);
+
+        glEnd();
+        glColor3f(0.5,0.35,0.05);
+        glBegin(GL_POLYGON);
+            glVertex2f(550,520);
+            glVertex2f(1300,520);
+            glVertex2f(1000,650);
+            glVertex2f(550,520);
+
+        glEnd();
+        glBegin(GL_POLYGON);
+            glVertex2f(1200,520);
+            glVertex2f(1300,600);
+            glVertex2f(1300,520);
+            glVertex2f(100,520);
+
+        glEnd();
+
+
+}
+void drawLand(void)
+{
+	glColor3f(0.231075,0.372549,0.043137);
+
+	//Draws the landscape
+	glBegin(GL_POLYGON);
+		glVertex2f(0,50);
+		glVertex2f(1300,50);
+		glVertex2f(1300,520);
+		glVertex2f(0,520);
+	glEnd();
 }
 void cutter1(float x,float y)
 {
@@ -1092,18 +1200,7 @@ void drawWater(void)
 	glEnd();
 }
 
-void drawLand(void)
-{
-	glColor3f(0.231075,0.372549,0.043137);
 
-	//Draws the landscape
-	glBegin(GL_POLYGON);
-		glVertex2f(0,50);
-		glVertex2f(1300,50);
-		glVertex2f(1300,550);
-		glVertex2f(0,550);
-	glEnd();
-}
 
 
 void drawGrasses(void)
@@ -1523,18 +1620,23 @@ void mydisplayThirdWindow()
 	////(TEXT("cow.wav"),  NULL, SND_FILENAME | SND_ASYNC);
 	////(TEXT("Axe.wav"),  NULL, SND_FILENAME | SND_ASYNC);
 	glClear(GL_COLOR_BUFFER_BIT);
+	sun();
 	drawLand();
+
+	hills();
 	drawWater();
 
 	glPushMatrix();
-	glTranslatef(-100.0,200.0,0.0);
-	drawTree();
+	glTranslatef(-40.0,100.0,0.0);
+	tree();
 	glPopMatrix();
 
+	drawbirds(birdsmove);
+	birdsmove+=0.5;
 
 	glPushMatrix();
 	glTranslatef(600.0,300.0,0.0);
-	drawTree();
+	//drawTree();
 	glPopMatrix();
 
 	drawTree();
@@ -1881,18 +1983,22 @@ void keyFourth(unsigned char key,int x,int y)
 void mydisplayFourthWindow()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
+	sun();
 	drawLand();
+	hills();
 	drawWater();
 
 	glPushMatrix();
-	glTranslatef(-100.0,200.0,0.0);
-	drawTree();
+	glTranslatef(-40.0,100.0,0.0);
+	tree();
 	glPopMatrix();
 
+    drawbirds(birdsmove);
+	birdsmove+=0.5;
 
 	glPushMatrix();
 	glTranslatef(600.0,300.0,0.0);
-	drawTree();
+	//drawTree();
 	glPopMatrix();
 
 	drawTree();
@@ -2409,18 +2515,21 @@ void mydisplaySixthWindow(void)
 	moveFishAxe+=0.5;
 	//cout<<"moveFishAxe:"<<moveFishAxe<<"\n";
 	glClear(GL_COLOR_BUFFER_BIT);
+	sun();
 	drawLand();
+	hills();
 	drawWater();
 
 	glPushMatrix();
-	glTranslatef(-100.0,200.0,0.0);
-	drawTree();
+	glTranslatef(-40.0,100.0,0.0);
+	tree();
 	glPopMatrix();
-
+    drawbirds(birdsmove);
+	birdsmove+=0.5;
 
 	glPushMatrix();
 	glTranslatef(600.0,300.0,0.0);
-	drawTree();
+	//drawTree();
 	glPopMatrix();
 
 	drawTree();
@@ -2741,19 +2850,22 @@ void mydisplaySeventhWindow()
 {
 	moveFishAxe2+=0.5;
 	glClear(GL_COLOR_BUFFER_BIT);
+	sun();
 	drawLand();
+	hills();
 	drawWater();
 
 	glPushMatrix();
-	glTranslatef(-100.0,200.0,0.0);
-	drawTree();
+	glTranslatef(-40.0,100.0,0.0);
+	tree();
 	glPopMatrix();
-
+    drawbirds(birdsmove);
+	birdsmove+=0.5;
 
 	glPushMatrix();
-	glTranslatef(600.0,300.0,0.0);
-	drawTree();
+	//
 	glPopMatrix();
+
 
 	drawTree();
 	drawGrasses();
@@ -2827,18 +2939,22 @@ void displayEigthWindow()
 {
 	moveFishAxe3+=0.5;
 	glClear(GL_COLOR_BUFFER_BIT);
+	sun();
 	drawLand();
+	hills();
 	drawWater();
 
-	glPushMatrix();
-	glTranslatef(-100.0,200.0,0.0);
-	drawTree();
-	glPopMatrix();
 
+	glPushMatrix();
+	glTranslatef(-40.0,100.0,0.0);
+	tree();
+	glPopMatrix();
+    drawbirds(birdsmove);
+	birdsmove+=0.5;
 
 	glPushMatrix();
 	glTranslatef(600.0,300.0,0.0);
-	drawTree();
+	//drawTree();
 	glPopMatrix();
 
 	drawTree();
@@ -2949,18 +3065,21 @@ void displayTenthWindow(void)
 {
 	moveFishAxe4+=0.5;
 	glClear(GL_COLOR_BUFFER_BIT);
+	sun();
 	drawLand();
+	hills();
 	drawWater();
 
 	glPushMatrix();
-	glTranslatef(-100.0,200.0,0.0);
-	drawTree();
+	glTranslatef(-40.0,100.0,0.0);
+	tree();
 	glPopMatrix();
-
+    drawbirds(birdsmove);
+	birdsmove+=0.5;
 
 	glPushMatrix();
 	glTranslatef(600.0,300.0,0.0);
-	drawTree();
+	//drawTree();
 	glPopMatrix();
 
 	drawTree();

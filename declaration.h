@@ -43,8 +43,14 @@ void moverightlegs(float,float);
 void moveleftlegs(float,float);
 void leftleg(float,float);
 void rightleg(float,float);
+void hills(void);
+void sun(void);
+void drawbirds(float);
+void birds(float,float);
 
 
+void circle(float,float,float);
+void cloud(void);
 
 void drawTreeEdges(void);
 void drawLeafTriangles(void);
