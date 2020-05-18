@@ -49,8 +49,9 @@ void drawbirds(float);
 void birds(float,float);
 
 
-void circle(float,float,float);
-void cloud(void);
+void circle(int,int,int);
+void cloud(int,int);
+void drawCloud(int);
 
 void drawTreeEdges(void);
 void drawLeafTriangles(void);

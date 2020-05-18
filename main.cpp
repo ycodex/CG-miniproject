@@ -200,15 +200,21 @@ void mydisplaySecondWindow()
 	tree();
 
 	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(1100.0,550.0,0.0);
+	drawCloud(cloudmove);
+	cloudmove+=0.5;
+	glPopMatrix();
+
+
     drawbirds(birdsmove);
 	birdsmove+=0.5;
 
-	glPushMatrix();
-	glTranslatef(600.0,550.0,0.0);
-	cloud();
+
 	//tree();
 	//drawTree();
-	glPopMatrix();
+
     //tree();
     drawTree();
 	drawGrasses();
@@ -295,13 +301,22 @@ void circle(int x,int y,int r){
 
 
 }
-void cloud(){
-    glColor3f(1.0,1.0,1.0);
-    circle(100,100,10);
-    circle(95,90,10);
-    circle(92,90,10);
-    circle(90,100,10);
+void drawCloud(int cmove)
+{
 
+    cloud(cmove,0);
+}
+void cloud(int x,int y){
+    glColor3f(1.0,1.0,1.0);
+    circle(100-x,100+y,10);
+    circle(85-x,100+y,10);
+    circle(110-x,100+y,10);
+    circle(100-x,110+y,10);
+
+    circle(150-x,120+y,10);
+    circle(135-x,120+y,10);
+    circle(140-x,120+y,10);
+    circle(150-x,110+y,10);
 
 }
 void drawbirds(float bimove){
@@ -1193,8 +1208,8 @@ void drawWater(void)
 	glBegin(GL_POLYGON);
 		glVertex2f(1300,175);
 		glVertex2f(825,175);
-		glVertex2f(600,250);
-		glVertex2f(600,300);
+		glVertex2f(600,200);
+		glVertex2f(580,300);
 		glVertex2f(800,450);
 		glVertex2f(1300,450);
 	glEnd();
@@ -1631,6 +1646,12 @@ void mydisplayThirdWindow()
 	tree();
 	glPopMatrix();
 
+	glPushMatrix();
+	glTranslatef(1100.0,550.0,0.0);
+	drawCloud(cloudmove);
+	cloudmove+=0.5;
+	glPopMatrix();
+
 	drawbirds(birdsmove);
 	birdsmove+=0.5;
 
@@ -1991,6 +2012,12 @@ void mydisplayFourthWindow()
 	glPushMatrix();
 	glTranslatef(-40.0,100.0,0.0);
 	tree();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(1100.0,550.0,0.0);
+	drawCloud(cloudmove);
+	cloudmove+=0.5;
 	glPopMatrix();
 
     drawbirds(birdsmove);
@@ -2524,6 +2551,12 @@ void mydisplaySixthWindow(void)
 	glTranslatef(-40.0,100.0,0.0);
 	tree();
 	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(1100.0,550.0,0.0);
+	drawCloud(cloudmove);
+	cloudmove+=0.5;
+	glPopMatrix();
     drawbirds(birdsmove);
 	birdsmove+=0.5;
 
@@ -2859,6 +2892,13 @@ void mydisplaySeventhWindow()
 	glTranslatef(-40.0,100.0,0.0);
 	tree();
 	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(1100.0,550.0,0.0);
+	drawCloud(cloudmove);
+	cloudmove+=0.5;
+	glPopMatrix();
+
     drawbirds(birdsmove);
 	birdsmove+=0.5;
 
@@ -2949,6 +2989,13 @@ void displayEigthWindow()
 	glTranslatef(-40.0,100.0,0.0);
 	tree();
 	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(1100.0,550.0,0.0);
+	drawCloud(cloudmove);
+	cloudmove+=0.5;
+	glPopMatrix();
+
     drawbirds(birdsmove);
 	birdsmove+=0.5;
 
@@ -3074,6 +3121,13 @@ void displayTenthWindow(void)
 	glTranslatef(-40.0,100.0,0.0);
 	tree();
 	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(1100.0,550.0,0.0);
+	drawCloud(cloudmove);
+	cloudmove+=0.5;
+	glPopMatrix();
+
     drawbirds(birdsmove);
 	birdsmove+=0.5;
 
